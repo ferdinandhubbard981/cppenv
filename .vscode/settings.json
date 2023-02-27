@@ -4,5 +4,8 @@
         "miDebuggerPath": "/usr/bin/gdb"
     },
     "cmake.generator": "Unix Makefiles",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
+        "google-*"
+    ]
 }
