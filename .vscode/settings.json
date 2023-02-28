@@ -5,7 +5,10 @@
     },
     "cmake.generator": "Unix Makefiles",
     "cmake.configureOnOpen": true,
-    "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
-        "google-*"
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.codeAnalysis.clangTidy.config": "",
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "cppcoreguidelines-prefer-member-initializer",
+        "cppcoreguidelines-owning-memory"
     ]
 }

@@ -55,10 +55,10 @@ public:
     static void getSubgrids(vector<vector<vector<int>>>& subgrids, vector<vector<int>>& grid) {
         vector<vector<int>> topLeft, topRight, botLeft, botRight;
         for (u_int32_t i = 0; i < grid.size()/2; i++) {
-            topLeft.push_back({});
-            topRight.push_back({});
-            botLeft.push_back({});
-            botRight.push_back({});
+            topLeft.emplace_back();
+            topRight.emplace_back();
+            botLeft.emplace_back();
+            botRight.emplace_back();
             for (u_int32_t j = 0; j < grid.size()/2; j++) {
                 topLeft[i].push_back(grid[i][j]);
                 topRight[i].push_back(grid[i][j+grid.size()/2]);
@@ -72,7 +72,7 @@ public:
         subgrids.push_back(botRight);
     }
     Node* construct(vector<vector<int>>& grid) {
-        Node *output;
+        Node *output = nullptr;
         if (gridIsUniform(grid)) {
             // set leaf true and val to val
             output = new Node(grid[0][0], true);
@@ -81,13 +81,13 @@ public:
             vector<vector<vector<int>>> subgrids;
             getSubgrids(subgrids, grid);
             // call construct on 4 subgrids and add to output node
-            Node *topLeft, *topRight, *botLeft, *botRight;
+            Node *topLeft = nullptr, *topRight = nullptr, *botLeft = nullptr, *botRight = nullptr;
             topLeft = construct(subgrids[0]);
             topRight = construct(subgrids[1]);
             botLeft = construct(subgrids[2]);
             botRight = construct(subgrids[3]);
-            
-            output = new Node(1, 0, topLeft, topRight, botLeft, botRight);
+
+            output = new Node(true, false, topLeft, topRight, botLeft, botRight);
         }
             
         return output;
